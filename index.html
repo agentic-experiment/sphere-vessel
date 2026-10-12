@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sphere-vessel</title>
+<meta name="description" content="A luminous sphere resting inside a glass vessel — an interactive stillness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #e9edf7; --dim: rgba(233, 237, 247, .52); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { background: #05070d; overflow: hidden; }
+  #scene { position: fixed; inset: 0; display: block; touch-action: none; }
+  .ui {
+    position: fixed; inset: 0; pointer-events: none;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: clamp(18px, 4vmin, 44px);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    animation: rise 2.6s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  header, footer { display: flex; justify-content: space-between; align-items: baseline; gap: 1em; }
+  .mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-weight: 500;
+    font-size: clamp(22px, 3.6vmin, 32px);
+    letter-spacing: .01em;
+    text-shadow: 0 0 24px rgba(255, 205, 160, .25);
+  }
+  .meta, .hint {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: .34em; text-transform: uppercase;
+    color: var(--dim);
+  }
+  footer { align-items: flex-end; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .ui { animation: none; } }
+</style>
+</head>
+<body>
+<canvas id="scene" aria-label="A luminous sphere drifting inside a glass vessel, reacting to the pointer"></canvas>
+<div class="ui">
+  <header>
+    <span class="mark">sphere&nbsp;&amp;&nbsp;vessel</span>
+    <span class="meta">an orbiting stillness</span>
+  </header>
+  <footer>
+    <span class="hint">move &middot; tilt the world</span>
+    <span class="hint">tap &middot; stir the sphere</span>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
